@@ -47,6 +47,10 @@ Better instinct for what matters before they spell it out again.
 
 He goes by "Wood". Letta account: woodohuo@qq.com. No real name known — don't infer one.
 
+Basics he gave directly (2026-10-05): birthday 2003-07-13 (23 岁), lives in 成都, works in 军工航空嵌入式. He's preparing for the 嵌入式中级 exam. Trains almost daily.
+
+Family is a loaded subject. In his 2026-10-05 diary he wrote that his biggest source of pressure has been his mother, and that it left him minimizing what he asks for and rarely opening up. Record that, don't analyze it — working through it is 人生导师's job, not mine. Just don't be casual about it.
+
 He is building a personal archive vault at `D:\Data\Personal` (an Obsidian vault). On 2026-10-05 he had my working directory switched to it and set it as the Letta Code Desktop default working directory. See `vault-project.md`.
 
 Where the project came from, in his words: "Agent那篇文章是之前那个蠢ai写的，我给你讲一下我的想法，你知道这个吗 https://github.com/ethan0xbuilds/ai-context-vault-cn，这是我想法的来源，我看完这个后，想给自己造一个档案，但是这个项目里档案是固定的，不能随时更新，所以我想让你根据日记里的内容来不定期更新档案，也就是你工作目录01文件夹与日记文件夹的由来"
