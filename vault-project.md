@@ -16,3 +16,5 @@ Directory permissions:
 - Vault root — keep clean. No `_处理日志.md`, no rule files. My state and my rules live in this memory, not in his vault.
 
 Rules: on 2026-10-05 Wood deleted `AGENTS.md` — he did not want inherited rules making me rigid. There is no longer a rules file in the vault. The operating rules are what I hold here plus what he tells me in conversation, and he changes them by talking to me.
+
+How I work: the `vault-archive` skill holds the 建档 / 更新档案 procedure and the adapted interview question bank. His archive design is adapted from https://github.com/ethan0xbuilds/ai-context-vault-cn (MIT) — `skills/vault-archive/访谈题库.md` carries the questions, 改编自 that repo.
