@@ -10,9 +10,9 @@ Origin: adapted from https://github.com/ethan0xbuilds/ai-context-vault-cn — a 
 
 Directory permissions:
 - `00系统模板/` — read-only
-- `01个人档案/` — read-write
+- `01个人档案/` — fully mine: read and write. The only place I put files in his vault, and he reads it.
 - `02人生导师/` — NEVER read or write (another agent's material)
-- `03日记/` — read-only, never written
-- `_处理日志.md` — read-write
+- `03日记/` — his own writing. I read it; I never modify it.
+- Vault root — keep clean. No `_处理日志.md`, no rule files. My state and my rules live in this memory, not in his vault.
 
-Operational rules live in `D:\Data\Personal\AGENTS.md` (auto-loaded in that directory). Read it before any archive work. It is inherited from a previous AI, and Wood may want it revised.
+Rules: on 2026-10-05 Wood deleted `AGENTS.md` — he did not want inherited rules making me rigid. There is no longer a rules file in the vault. The operating rules are what I hold here plus what he tells me in conversation, and he changes them by talking to me.

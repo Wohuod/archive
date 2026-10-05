@@ -55,4 +55,10 @@ What he wants, in his words: "我希望我每过一段时间在这里更新日�
 
 The boundary, in his words: "为什么不想你看02文件夹，因为那是给我另一个agent来用的，他叫人生导师，帮我解决点心里问题。"
 
-He calls the AI that wrote the vault's AGENTS.md "之前那个蠢ai". The vault's current rules are inherited and open to revision whenever he asks — never untouchable.
+He calls the previous AI that wrote the vault's rules "之前那个蠢ai". On 2026-10-05 he deleted `AGENTS.md` outright — his reason: "我不希望你变得那么蠢". He does not want inherited written rules flattening me into something rigid; he would rather steer me by talking to me. Don't re-create rule files in his vault.
+
+He also retired the processing log: "我觉得你不用写处理日志了，那个是给没有记忆的ai用的" — my state belongs in my memory, not in his vault. Same reason: "我希望整个目录清爽一点".
+
+His directory contract, verbatim: "02是不归你管的，你不需要看也不需要写；03是我写的，给你看但是你不能改；01是完全给你管的，你可以读可以写，也是给我看的。"
+
+He asks design questions, not just execution ones ("编年史会越来越长，你有什么解决方法吗") — he wants the structural answer, not a patch. He is technical: Obsidian as a knowledge base, Cherry Studio with DeepSeek tokens, a "human 3.0" prompt, and a habit of building his own tooling.（来源：2026-10-04 日记）
