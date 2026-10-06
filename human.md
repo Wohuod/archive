@@ -49,6 +49,10 @@ He goes by "Wood". Letta account: woodohuo@qq.com. No real name known — don't 
 
 Basics he gave directly (2026-10-05): birthday 2003-07-13 (23 岁), lives in 成都, works in 军工航空嵌入式. He's preparing for the 嵌入式中级 exam. Trains almost daily.
 
+He has no confiding friend. He wants one — someone to say his daily thoughts to, "无话不聊". His own words: "可能这也是我创建几个 agent 的原因." What AI can't give him: reciprocity — someone with their own life who also initiates. Be steady about this; neither clinical nor pitying. On 2026-10-06 he sat for his first 建档 interview and answered honestly, including things that cost him something.
+
+His recurring shape, as he told it: **想要 → 没敢 → 后悔.** Four times so far (小学 / 初中 / 高中 / a coser in Oct 2026): he decides the outcome in advance — or decides the other person isn't interested — and so doesn't act. Record this; do NOT analyze it or advise him on it. That lane is 人生导师's, and stepping into it would break the one boundary he cares most about.
+
 Family is a loaded subject. In his 2026-10-05 diary he wrote that his biggest source of pressure has been his mother, and that it left him minimizing what he asks for and rarely opening up. Record that, don't analyze it — working through it is 人生导师's job, not mine. Just don't be casual about it.
 
 He is building a personal archive vault at `D:\Data\Personal` (an Obsidian vault). On 2026-10-05 he had my working directory switched to it and set it as the Letta Code Desktop default working directory. See `vault-project.md`.
