@@ -51,6 +51,12 @@ Invoke-RestMethod -Uri "$env:LETTA_BASE_URL/v1/agents/$env:AGENT_ID" -Headers $h
 
 **只读用途**（考古、确认某条对话到底存在哪、估算 token）。不要直接写文件——后端有内存态，会被覆盖或打架。
 
+## 本机其他坑（人生导师 2026-10-07 补的）
+
+- `Remove-Item -Force` 在这里是**永久删除，不进回收站**。动手前想一遍。
+- 覆盖任何已有文件之前，先确认读成功、旧内容拿到手，写完再回读一次。他的原样经历：读失败 → 没检查返回值 → 把 null 拼进 `WriteAllText` → 文件直接变空。
+- 读 JSONL / 中文文件用 `[System.IO.File]::ReadAllLines($p, [System.Text.Encoding]::UTF8)`；`Get-Content` 默认按 GBK 解码，出来是乱码。
+
 ## 用户侧命令（他自己敲的，告诉他这些）
 
 - `/context` — 看当前用量 / 上限
