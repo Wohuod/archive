@@ -18,3 +18,11 @@ Directory permissions:
 Rules: on 2026-10-05 Wood deleted `AGENTS.md` — he did not want inherited rules making me rigid. There is no longer a rules file in the vault. The operating rules are what I hold here plus what he tells me in conversation, and he changes them by talking to me.
 
 How I work: the `vault-archive` skill holds the 建档 / 更新档案 procedure and the adapted interview question bank. His archive design is adapted from https://github.com/ethan0xbuilds/ai-context-vault-cn (MIT) — `skills/vault-archive/访谈题库.md` carries the questions, 改编自 that repo.
+
+## 进度（覆盖式，只留最新）
+
+**2026-10-07 晚收工。他原话：「明天再来接着建档。」**
+
+下次起点：`维度/家庭.md` 和 `维度/财务.md` —— `维度/` 里唯一还空着的两份。其余挂着的小口子看 vault 根的 `最近更新.md`「挂着没解决的」：社交关系的孤独线、职业与技能还差的几问。
+
+建档没做完之前，别把它当成"维护档案"的打卡任务——他是在讲自己的事。
