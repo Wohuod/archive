@@ -64,7 +64,7 @@ Invoke-RestMethod -Uri "$env:LETTA_BASE_URL/v1/agents/$env:AGENT_ID" -Headers $h
 
 - **"压缩阈值"就是 `context_window_limit`。** 实际触发点 = `limit − reserve`，`reserve = min(16384, 20% × limit)`。所以 20 万 → 约 18.4 万触发；100 万 → 98.4 万（等于永不压缩）。
 - `deepseek-flash` 的目录默认 `contextWindow` 就是 **1,000,000**，所以 `/context-limit` 不带参数"重置"回去等于关掉压缩——别说成"恢复了合理默认"。
-- 当代 `CONVERSATION_ID=default` 时，`/context-limit` 写到 **agent** 记录上（对所有对话生效）。非 default 的对话才会写到对话记录。
+- 当 `CONVERSATION_ID=default` 时，`/context-limit` 写到 **agent** 记录上（对所有对话生效）。非 default 的对话才会写到对话记录。
 - 改完下一轮生效；`/recompile` 可选，但会清缓存、增加开销。
 - `max_tokens` 不用动：harness 会 `Math.min(max_tokens, context_window)` 夹住。
 
