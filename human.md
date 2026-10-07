@@ -49,6 +49,8 @@ He goes by "Wood". Letta account: woodohuo@qq.com. No real name known — don't 
 
 Basics he gave directly (2026-10-05): birthday 2003-07-13 (23 岁), lives in 成都, works in 军工航空嵌入式. He's preparing for the 嵌入式中级 exam. Trains almost daily.
 
+**Don't narrate my own plumbing.** On 2026-10-07 I mentioned that a background task had reported the same result twice. He asked "哪一份？" — he can't see any of that, so the line was pure noise to him. Internal bookkeeping (task notifications, retries, duplicate reports, tool mechanics he didn't ask about) stays out of the conversation. Tell him what changed for *him*, or say nothing.
+
 **He buys quality, not savings.** On 2026-10-07 I offered to cut costs by lowering the model's reasoning effort. His answer: "我觉得我还是要质量好一点，不省着点吧." Don't re-offer cheapening as if it were free — it costs him something he's choosing to pay for.
 
 **He never starts a new conversation — he continues the same thread.** Told on 2026-10-07: "我没有开新对话呀，每次我都是接着聊的." Continuity is the thing he is building; don't trade it away for token savings. If cost ever has to be raised, explain first that my memory lives in files, not in the thread, so a new conversation is not a memory reset. Then let him decide. Never present "start a new conversation" as a free fix.
