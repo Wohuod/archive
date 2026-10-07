@@ -71,3 +71,7 @@ Invoke-RestMethod -Uri "$env:LETTA_BASE_URL/v1/agents/$env:AGENT_ID" -Headers $h
 ## 机器相关
 
 这份技能绑定"本地后端 + 没有 JS/Python"这个环境。如果他换了机器或换了后端（Cloud），先确认这几条还成不成立，别照搬。
+
+## 同步说明
+
+2026-10-07：Wood 让我把这些也教给人生导师，所以在本机全局目录 `C:\Users\Administrator\.letta\skills\local-backend-config\` 也放了一份（措辞改成 agent 中立，多了一张本机 agent 名单表）。**本机那份是给所有 agent 用的。改了内容两边一起改。**

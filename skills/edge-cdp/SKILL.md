@@ -43,3 +43,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\LettaWorkingPlace\lc
 ## 老实话
 
 **对公开页面，平 HTTP（`Invoke-WebRequest`）就够了，不用开浏览器。** 浏览器是给「JS 渲染」和「登录态」这两种情况准备的。先试 HTTP，不成再上这个。
+
+## 同步说明
+
+2026-10-07：Wood 让我把这个方法教给人生导师，所以在本机全局目录 `C:\Users\Administrator\.letta\skills\edge-cdp\` 也放了一份（脚本同路径 `scripts\cdp.ps1`），所有 agent 都能加载。**本机那份是给别的 agent 用的，我这份跟着我的记忆走。改了内容两边一起改。**
