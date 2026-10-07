@@ -97,16 +97,22 @@ Send-Cdp 'Page.navigate' @{ url = $Url } | Out-Null
 Write-Output "navigated: $Url"
 Start-Sleep -Seconds $WaitSeconds
 
-$expr = 'document.title + " ||| " + document.body.innerText'
-$evalId = Send-Cdp 'Runtime.evaluate' @{ expression = $expr; returnByValue = $true }
-$r = Wait-Cdp $evalId 20000
-if ($r -and $r.result -and $r.result.result -and $r.result.result.value) {
-  $v = [string]$r.result.result.value
+# 导航会销毁执行上下文，所以读的时候要重试；顺便把最终地址也带回来
+$expr = 'location.href + " ||| " + document.title + " ||| " + document.body.innerText'
+$v = $null
+for ($attempt = 1; $attempt -le 3; $attempt++) {
+  $evalId = Send-Cdp 'Runtime.evaluate' @{ expression = $expr; returnByValue = $true }
+  $r = Wait-Cdp $evalId 20000
+  if ($r -and $r.result -and $r.result.result -and $r.result.result.value) { $v = [string]$r.result.result.value; break }
+  Write-Output ("read attempt $attempt returned nothing, retrying")
+  Start-Sleep -Seconds 4
+}
+
+if ($v) {
   Write-Output '--- page text ---'
   Write-Output $v.Substring(0, [Math]::Min($MaxChars, $v.Length))
 } else {
-  Write-Output 'eval returned nothing'
-  if ($r) { $r | ConvertTo-Json -Depth 6 }
+  Write-Output 'eval returned nothing after 3 attempts'
 }
 try { $ws.CloseAsync([System.Net.WebSockets.WebSocketCloseStatus]::NormalClosure, 'done', $ct).GetAwaiter().GetResult() | Out-Null } catch { }
 
