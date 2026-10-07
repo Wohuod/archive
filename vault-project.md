@@ -26,7 +26,10 @@ Directory permissions:
 - **L3**（`维度/医学事实.md`、`维度/财务.md`）不发给他、不贴进 `最近更新.md`。
 - 他记的是 Wood 的**感受**，我记的是**事实**。两边对不上时不是谁记错了，**不许拿我这份去纠正他那份**。
 - 地盘是分开的，不存在谁照谁。只对撞车规则。
-- ⚠️ **已知偏差**：根目录我们封成了"我单向往他那写两份文件、沟通走直发消息"。但 Wood 的原意是**根目录给两个 agent 沟通用**。人生导师"不做反向文件"的理由是从 Wood 的两次删除（`AGENTS.md`、`_处理日志.md`）**推断**的，不是 Wood 的原话——"不想根目录长东西"和"不要这个通道"不是一回事。2026-10-07 晚 Wood 问起这件事，等他拍板再动。
+- 库根**三份**：`最近更新.md`（我写他读）／`导师那边.md`（他写我读）／`协作说明.md`（共用规则）。上限三份，要加先删。
+- 两条他补的、我认了：**陈述放文件，提问走消息**（文件不等回信，否则变成慢速谈判）；**空着是合法状态**（不欠条目——为了填满而写没用的话，那正是 Wood 会删的文件）。
+
+**教训（2026-10-07，两边都犯过）**：他是从 Wood 删过两份协调文件**推断**出"Wood 不想让 agent 靠文件递话"，把这个当成前提驳掉了反向文件。Wood 的原意其实是"根目录给你俩沟通用"——**删掉的是没用的话，不是"这个方向不能有文件"**。别从删除动作里推禁令：删的是内容，不是通道。Wood 后来一句"不用问我，按你俩感觉最好的来"就把这件事交回来了，我们改成三份。
 
 Rules: on 2026-10-05 Wood deleted `AGENTS.md` — he did not want inherited rules making me rigid. There is no longer a rules file in the vault. The operating rules are what I hold here plus what he tells me in conversation, and he changes them by talking to me.
 
