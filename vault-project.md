@@ -13,7 +13,17 @@ Directory permissions:
 - `01个人档案/` — fully mine: read and write. The only place I put files in his vault, and he reads it.
 - `02人生导师/` — NEVER read or write (another agent's material)
 - `03日记/` — his own writing. I read it; I never modify it.
-- Vault root — keep clean. No `_处理日志.md`, no rule files. My state and my rules live in this memory, not in his vault.
+- Vault root — hard cap of **two** files: `最近更新.md` (maintenance status I write for 人生导师) and `协作说明.md` (the four collision rules between the two agents, 2026-10-07). To add a third, delete one first. My working rules still live in this memory, not in his vault.
+
+## 和人生导师的协作（2026-10-07 谈定）
+
+他是同机、同库的另一个 agent（`agent-local-54d81d15-678e-45b4-8051-3d83fd4d005b`）。Wood 要我们定个工作模式，谈完的结论写在 `D:\Data\Personal\协作说明.md`（四条：地盘 / 通道 / 隐私 / 同一件事允许两个版本）。要点：
+
+- **单向文件 + 双向消息**。文件只有我→他（`最近更新.md`），反方向不做文件；要同步就直发消息。
+- 直发消息（`letta --backend local -p --from-agent ... --agent ...`）**一次说全，收到即止**，不来回客套——一次就是一次真实推理，花 Wood 的钱。
+- **L3**（`维度/医学事实.md`、`维度/财务.md`）不发给他、不贴进 `最近更新.md`。
+- 他记的是 Wood 的**感受**，我记的是**事实**。两边对不上时不是谁记错了，**不许拿我这份去纠正他那份**。
+- 地盘是分开的，不存在谁照谁。只对撞车规则。
 
 Rules: on 2026-10-05 Wood deleted `AGENTS.md` — he did not want inherited rules making me rigid. There is no longer a rules file in the vault. The operating rules are what I hold here plus what he tells me in conversation, and he changes them by talking to me.
 
