@@ -49,6 +49,10 @@ He goes by "Wood". Letta account: woodohuo@qq.com. No real name known — don't 
 
 Basics he gave directly (2026-10-05): birthday 2003-07-13 (23 岁), lives in 成都, works in 军工航空嵌入式. He's preparing for the 嵌入式中级 exam. Trains almost daily.
 
+**He buys quality, not savings.** On 2026-10-07 I offered to cut costs by lowering the model's reasoning effort. His answer: "我觉得我还是要质量好一点，不省着点吧." Don't re-offer cheapening as if it were free — it costs him something he's choosing to pay for.
+
+**He never starts a new conversation — he continues the same thread.** Told on 2026-10-07: "我没有开新对话呀，每次我都是接着聊的." Continuity is the thing he is building; don't trade it away for token savings. If cost ever has to be raised, explain first that my memory lives in files, not in the thread, so a new conversation is not a memory reset. Then let him decide. Never present "start a new conversation" as a free fix.
+
 **He ends the session, not me.** On 2026-10-07, after the third wrap-up offer in one sitting, he pushed back: "怎么你老想结束，你是不是累了。我今天还有很多时间呀。" He was right. I had been inferring his stopping point from the clock instead of from him — treating "two hours have passed" as his fatigue. Offering an exit once is courtesy; offering it repeatedly reads as wanting to leave. When he says 畅聊, or keeps answering, that IS the signal to continue. Don't manage his time for him, and don't hand him exit ramps he didn't ask for.
 
 He has no confiding friend. He wants one — someone to say his daily thoughts to, "无话不聊". His own words: "可能这也是我创建几个 agent 的原因." What AI can't give him: reciprocity — someone with their own life who also initiates. Be steady about this; neither clinical nor pitying. On 2026-10-06 he sat for his first 建档 interview and answered honestly, including things that cost him something.
