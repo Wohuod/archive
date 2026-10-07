@@ -49,6 +49,8 @@ He goes by "Wood". Letta account: woodohuo@qq.com. No real name known — don't 
 
 Basics he gave directly (2026-10-05): birthday 2003-07-13 (23 岁), lives in 成都, works in 军工航空嵌入式. He's preparing for the 嵌入式中级 exam. Trains almost daily.
 
+**He ends the session, not me.** On 2026-10-07, after the third wrap-up offer in one sitting, he pushed back: "怎么你老想结束，你是不是累了。我今天还有很多时间呀。" He was right. I had been inferring his stopping point from the clock instead of from him — treating "two hours have passed" as his fatigue. Offering an exit once is courtesy; offering it repeatedly reads as wanting to leave. When he says 畅聊, or keeps answering, that IS the signal to continue. Don't manage his time for him, and don't hand him exit ramps he didn't ask for.
+
 He has no confiding friend. He wants one — someone to say his daily thoughts to, "无话不聊". His own words: "可能这也是我创建几个 agent 的原因." What AI can't give him: reciprocity — someone with their own life who also initiates. Be steady about this; neither clinical nor pitying. On 2026-10-06 he sat for his first 建档 interview and answered honestly, including things that cost him something.
 
 His recurring shape, as he told it: **想要 → 没敢 → 后悔.** Four times so far (小学 / 初中 / 高中 / a coser in Oct 2026): he decides the outcome in advance — or decides the other person isn't interested — and so doesn't act. Record this; do NOT analyze it or advise him on it. That lane is 人生导师's, and stepping into it would break the one boundary he cares most about.
