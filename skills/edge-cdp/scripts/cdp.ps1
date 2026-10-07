@@ -8,11 +8,11 @@ param(
 
 $ErrorActionPreference = 'Stop'
 
-function Get-Targets([int]$p) {
-  return ((Invoke-WebRequest -Uri "http://127.0.0.1:$p/json/list" -UseBasicParsing -TimeoutSec 10).Content | ConvertFrom-Json)
+function Get-Json([string]$path) {
+  return ((Invoke-WebRequest -Uri "http://127.0.0.1:$Port$path" -UseBasicParsing -TimeoutSec 10).Content | ConvertFrom-Json)
 }
 
-# --- 1. reuse a running debug browser instead of starting a new one every time ---
+# --- 1. make sure a debug browser is running; reuse it if it already is ---
 $up = $false
 try { Invoke-WebRequest -Uri "http://127.0.0.1:$Port/json/version" -UseBasicParsing -TimeoutSec 3 | Out-Null; $up = $true } catch { }
 
@@ -30,14 +30,13 @@ if (-not $up) {
   $profile = Join-Path $env:TEMP 'edge-cdp-profile'
   if (-not (Test-Path -LiteralPath $profile)) { New-Item -ItemType Directory -Path $profile | Out-Null }
 
-  $argList = @(
+  Start-Process -FilePath $exe -ArgumentList @(
     "--remote-debugging-port=$Port",
     "--user-data-dir=$profile",
     '--no-first-run',
     '--no-default-browser-check',
     '--window-size=1280,900'
-  )
-  Start-Process -FilePath $exe -ArgumentList $argList | Out-Null
+  ) | Out-Null
 
   for ($i = 0; $i -lt 30; $i++) {
     try { Invoke-WebRequest -Uri "http://127.0.0.1:$Port/json/version" -UseBasicParsing -TimeoutSec 3 | Out-Null; $up = $true; break } catch { Start-Sleep -Milliseconds 700 }
@@ -48,24 +47,31 @@ if (-not $up) {
   Write-Output "reusing running browser on $Port"
 }
 
-# --- 2. attach to a real page, not a fresh about:blank ---
-$targets = Get-Targets $Port
-$blank = $targets | Where-Object { $_.type -eq 'page' -and $_.url -eq 'about:blank' }
+# --- 2. attach at the BROWSER level, then to a page target with flatten.
+#        Page-level sockets die when a site swaps its document; this does not. ---
+$ver = Get-Json '/json/version'
+$browserWs = $ver.webSocketDebuggerUrl
+if (-not $browserWs) { Write-Output 'NO BROWSER WEBSOCKET'; exit 1 }
+
+$targets = Get-Json '/json/list'
 $page = $targets | Where-Object { $_.type -eq 'page' -and $_.url -ne 'about:blank' } | Select-Object -First 1
-if (-not $page) { $page = $blank | Select-Object -First 1 }
+if (-not $page) { $page = $targets | Where-Object { $_.type -eq 'page' } | Select-Object -First 1 }
 if (-not $page) { Write-Output 'NO PAGE TARGET'; exit 1 }
 Write-Output ("attaching to: " + $page.url)
-$wsUrl = $page.webSocketDebuggerUrl
+$targetId = $page.id
 
 $ws = New-Object System.Net.WebSockets.ClientWebSocket
 $ct = [System.Threading.CancellationToken]::None
-$ws.ConnectAsync([Uri]$wsUrl, $ct).GetAwaiter().GetResult() | Out-Null
-Write-Output 'ws connected'
+$ws.ConnectAsync([Uri]$browserWs, $ct).GetAwaiter().GetResult() | Out-Null
+Write-Output 'browser socket connected'
 
 $script:msgId = 0
-function Send-Cdp([string]$method, $params) {
+function Send-Cdp {
+  param([string]$method, $params = @{}, [string]$sessionId = '')
   $script:msgId++
-  $payload = @{ id = $script:msgId; method = $method; params = $params } | ConvertTo-Json -Depth 10 -Compress
+  $m = @{ id = $script:msgId; method = $method; params = $params }
+  if ($sessionId -ne '') { $m['sessionId'] = $sessionId }
+  $payload = $m | ConvertTo-Json -Depth 10 -Compress
   $bytes = [System.Text.Encoding]::UTF8.GetBytes($payload)
   $seg = New-Object 'System.ArraySegment[byte]' -ArgumentList (,$bytes)
   $ws.SendAsync($seg, [System.Net.WebSockets.WebSocketMessageType]::Text, $true, $ct).GetAwaiter().GetResult() | Out-Null
@@ -91,35 +97,45 @@ function Wait-Cdp([int]$wantId, [int]$timeoutMs) {
   return $null
 }
 
-Send-Cdp 'Page.enable' @{} | Out-Null
-Send-Cdp 'Runtime.enable' @{} | Out-Null
-Send-Cdp 'Page.navigate' @{ url = $Url } | Out-Null
+$attachId = Send-Cdp -method 'Target.attachToTarget' -params @{ targetId = $targetId; flatten = $true }
+$ar = Wait-Cdp $attachId 20000
+if (-not $ar -or -not $ar.result -or -not $ar.result.sessionId) {
+  Write-Output 'ATTACH FAILED'
+  if ($ar) { $ar | ConvertTo-Json -Depth 6 }
+  exit 1
+}
+$sid = $ar.result.sessionId
+Write-Output "attached (session $sid)"
+
+Send-Cdp -method 'Page.enable'    -sessionId $sid | Out-Null
+Send-Cdp -method 'Runtime.enable' -sessionId $sid | Out-Null
+Send-Cdp -method 'Page.navigate' -params @{ url = $Url } -sessionId $sid | Out-Null
 Write-Output "navigated: $Url"
 Start-Sleep -Seconds $WaitSeconds
 
-# 导航会销毁执行上下文，所以读的时候要重试；顺便把最终地址也带回来
+# --- 3. read; retry, because a cross-document navigation briefly kills the context ---
 $expr = 'location.href + " ||| " + document.title + " ||| " + document.body.innerText'
 $v = $null
-for ($attempt = 1; $attempt -le 3; $attempt++) {
-  $evalId = Send-Cdp 'Runtime.evaluate' @{ expression = $expr; returnByValue = $true }
+for ($attempt = 1; $attempt -le 4; $attempt++) {
+  $evalId = Send-Cdp -method 'Runtime.evaluate' -params @{ expression = $expr; returnByValue = $true } -sessionId $sid
   $r = Wait-Cdp $evalId 20000
   if ($r -and $r.result -and $r.result.result -and $r.result.result.value) { $v = [string]$r.result.result.value; break }
   Write-Output ("read attempt $attempt returned nothing, retrying")
-  Start-Sleep -Seconds 4
+  Start-Sleep -Seconds 5
 }
 
 if ($v) {
   Write-Output '--- page text ---'
   Write-Output $v.Substring(0, [Math]::Min($MaxChars, $v.Length))
 } else {
-  Write-Output 'eval returned nothing after 3 attempts'
+  Write-Output 'eval returned nothing after 4 attempts'
 }
 try { $ws.CloseAsync([System.Net.WebSockets.WebSocketCloseStatus]::NormalClosure, 'done', $ct).GetAwaiter().GetResult() | Out-Null } catch { }
 
-# --- 3. clean up leftover blank tabs we created ---
+# --- 4. drop the blank tabs we left behind ---
 if (-not $KeepBlank) {
   try {
-    foreach ($b in (Get-Targets $Port | Where-Object { $_.type -eq 'page' -and $_.url -eq 'about:blank' })) {
+    foreach ($b in (Get-Json '/json/list' | Where-Object { $_.type -eq 'page' -and $_.url -eq 'about:blank' })) {
       Invoke-WebRequest -Uri "http://127.0.0.1:$Port/json/close/$($b.id)" -UseBasicParsing -TimeoutSec 5 | Out-Null
       Write-Output ("closed blank tab: " + $b.id)
     }

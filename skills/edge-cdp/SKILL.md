@@ -25,6 +25,8 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File "D:\LettaWorkingPlace\lc
 2. 所以脚本用 `%TEMP%\edge-cdp-profile` 这个**独立 profile**，会在他屏幕上开一个干净窗口（可见是好事，他能看着）。
 3. 代价：**没有他的登录态**。公开页面没问题；登录后的页面（小红书、抖音）要请他在那个窗口里**手动登录一次**，之后 profile 留着，能用一阵。
 4. **别去复制他的 profile 目录**——那会碰到他的 cookie。不干。
+5. **别每次重开浏览器**。第一版每次都拿 `about:blank` 当启动页新开一个实例，于是他的窗口里每跑一次多一个空白页（他会发现并问）。现在：先探 9222，通了就复用；跑完自动关掉遗留的空白页，不碰他自己的标签页。
+6. **页面级连接会被站点换文档打断**。抖音就是：`WebSocket is in an invalid state ('Aborted')`——它加载时把文档上下文整个换掉，挂在页面上的 socket 跟着死。修法是**浏览器级附加**：连 `/json/version` 的 browser socket，再 `Target.attachToTarget { targetId, flatten: true }` 挂到页面，之后每条命令带 `sessionId`。页面怎么跳都不会断。
 
 ## 已验证可用
 
