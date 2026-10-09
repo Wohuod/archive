@@ -15,7 +15,7 @@ Directory permissions:
 - `01个人档案/` — fully mine: read and write. The only place I put files in his vault, and he reads it.
 - `02人生导师/` — NEVER read or write (another agent's material)
 - `03日记/` — his own writing. I read it; I never modify it.
-- Vault root — hard cap of **two** files: `最近更新.md` (maintenance status I write for 人生导师) and `协作说明.md` (the four collision rules between the two agents, 2026-10-07). To add a third, delete one first. My working rules still live in this memory, not in his vault.
+- Vault root — hard cap of **three** files (2026-10-07 起): `最近更新.md` (maintenance status I write for 人生导师) ／ `导师那边.md` (他写我读) ／ `协作说明.md` (两个 agent 的撞车规则). To add a fourth, delete one first. My working rules still live in this memory, not in his vault.
 
 ## 和人生导师的协作（2026-10-07 谈定）
 
@@ -37,8 +37,10 @@ How I work: the `vault-archive` skill holds the 建档 / 更新档案 procedure 
 
 ## 进度（覆盖式，只留最新）
 
-**2026-10-08 收工（10-09 他回来接着干）：财务建档第一轮做完；职业与技能补上福利待遇；新增 `素材/` 这一类（只存不改、来源照录），`索引.md` 主线随之从三条改成四条。**
+**2026-10-09 收工（他说"明天再来"，被事情打断了）：`维度/家庭.md` 建档第一轮做完——`维度/` 九份全部有内容，不再有空壳。当晚又整理了一遍结构：`社交关系.md` 新增「孤独这条线」，把大学寝室（"双标"）／高中寝室／小学被孤立（含钟宜轩）／他提的"帮我找找原因"那四块，从 `个人宪法.md` 整段搬了过去，宪法那边只留摘要加指针。**
 
-下次起点：`维度/家庭.md` —— `维度/` 里唯一还空着的一份。其余挂着的小口子看 vault 根的 `最近更新.md`「挂着没解决的」。
+下次起点：**`社交关系` 收尾**——初中那段（他的原话"为数不多的和谐"）刚要问就被打断；然后是按「同一套格子」（场合／当时发生了什么／他的反应／对方的反应／他当时的判断／后来怎么结束）过一遍；再是孤独的现状。
+
+他 2026-10-09 说"按顺序来"，顺序是：社交 ↔ 职业最后三问 ↔ `编年史/2026` 春节那条 ↔ 家庭剩下的口子（叔伯姑舅姨）。其余挂着的小口子看 vault 根的 `最近更新.md`「挂着没解决的」。
 
 建档没做完之前，别把它当成"维护档案"的打卡任务——他是在讲自己的事。
