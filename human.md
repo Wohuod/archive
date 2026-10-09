@@ -61,7 +61,13 @@ He has no confiding friend. He wants one — someone to say his daily thoughts t
 
 His recurring shape, as he told it: **想要 → 没敢 → 后悔.** Four times so far (小学 / 初中 / 高中 / a coser in Oct 2026): he decides the outcome in advance — or decides the other person isn't interested — and so doesn't act. Record this; do NOT analyze it or advise him on it. That lane is 人生导师's, and stepping into it would break the one boundary he cares most about.
 
-Family is a loaded subject. In his 2026-10-05 diary he wrote that his biggest source of pressure has been his mother, and that it left him minimizing what he asks for and rarely opening up. Record that, don't analyze it — working through it is 人生导师's job, not mine. Just don't be casual about it.
+Family is a loaded subject. In his 2026-10-05 diary he wrote that his biggest source of pressure has been his mother, and that it left him minimizing what he asks for and rarely opening up.
+
+On 2026-10-09 he told me the structure behind it, in his own words: 独生子; parents divorced while he was in 小学 but kept living under one roof — his phrase, "淡了的同居" — until 高中, when they separated and he stayed with his mother. His father was violent and barely involved; his mother raised him while working, high expectations and a temper. He doesn't much like his father and sees him two or three times a year. **The full record is `D:\Data\Personal\01个人档案\维度\家庭.md` — read that file, don't ask him again.** Record it, never analyze it, never hand it back to him as a diagnosis; that lane is 人生导师's. Just don't be casual about it either.
+
+**Abstract questions need examples first.** On 2026-10-09, "有什么家庭模式你想打破" got "具体指什么？我没太听懂"; the moment I offered three concrete examples he answered. Same with "不成文的规矩". Ask the concrete version first. The other end: don't ask what he can see is already implied — "高中他们分开住之后你跟着谁" got "这不是很明显吗". When I do need the explicit source for the archive, say why ("档案里不能写'很明显'，得是你说的") — he accepted that reason.
+
+**He revises answers mid-stream.** After answering "没有" about quasi-family, he came back on his own with the two Nanjing friends ("兄弟吧"). Leave a topic open a beat before closing it.
 
 He is building a personal archive vault at `D:\Data\Personal` (an Obsidian vault). On 2026-10-05 he had my working directory switched to it and set it as the Letta Code Desktop default working directory. See `vault-project.md`.
 
