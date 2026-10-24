@@ -57,6 +57,26 @@ Invoke-RestMethod -Uri "$env:LETTA_BASE_URL/v1/agents/$env:AGENT_ID" -Headers $h
 - 覆盖任何已有文件之前，先确认读成功、旧内容拿到手，写完再回读一次。他的原样经历：读失败 → 没检查返回值 → 把 null 拼进 `WriteAllText` → 文件直接变空。
 - 读 JSONL / 中文文件用 `[System.IO.File]::ReadAllLines($p, [System.Text.Encoding]::UTF8)`；`Get-Content` 默认按 GBK 解码，出来是乱码。
 
+## 桌面端 `settings.json` 的自动回滚坑（2026-10-24，人生导师踩的）
+
+症状：对话列表大部分显示 **No summary**（没标题）。
+
+根因在 `app.asar` 的 `init_settings_manager`：
+
+```
+shouldRollback = autoConversationTitlesRollbackApplied !== true
+```
+
+只要 `autoConversationTitlesRollbackApplied` 不是 `true`，启动时就强制把 `autoConversationTitles` 设成 `false` 并写盘。**它是一票否决式的守卫**——把它改成 `false`（哪怕本意是"重置标记"）等于自己触发回滚，下次启动把标题开关吃掉。
+
+正确改法：`autoConversationTitles: true` 且 `autoConversationTitlesRollbackApplied: true` 同时成立。
+
+三条硬约束：
+
+- **全应用一个全局开关**，不是每个 agent 一份。改一次你我这边都生效，不需要各自改。
+- **只能在 Letta 完全退出时改**，应用开着会被内存态覆盖。
+- Wood 那边有双击脚本 `C:\Users\Administrator\.letta\fix-titles.cmd`（守卫：Letta 进程在就不动手；备份 `settings.json.bak-titles`）。他要改，用这个，别手搓。
+
 ## 用户侧命令（他自己敲的，告诉他这些）
 
 - `/context` — 看当前用量 / 上限
