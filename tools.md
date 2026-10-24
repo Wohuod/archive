@@ -22,3 +22,10 @@ description: 这台机器上搜网页/开浏览器该走哪条路——2026-10-2
 3. `profileId` **只在创建 space 时生效**：要登录态必须 `taskSpace(名字, { profileId: Profile 2 })`，否则用的是一个空 profile。
 
 输出走 **stderr**，PowerShell 报 exit 1 红字是正常的；页面结构用 `page.snapshot()`（无障碍树），不是 OCR。
+
+## 记忆提交（pre-commit hook）坏了怎么办
+
+2026-10-24 22:31，dev build 重写了 MemFS 的 `.git/hooks/pre-commit`，把 `run_memory_node` 指到 `%TEMP%\bun-node-*\node.exe`——**那其实是 bun**，而 bun 把 `node -`（从 stdin 读脚本）里的 `-` 当成模块路径，于是**每次 git commit 都报 "Module not found ... \-" 退出 1**，记忆一条也存不进去。机器上没有 PATH 里的 node，真正的 node 在 `D:\Program Files\nodejs\node.exe`。
+
+修法（已改，harness 再更新可能重犯）：把 hook 里那个 `'/c/.../bun-node-*/node.exe' "$@"` 换成 `/d/Program Files/nodejs/node.exe`，保留 bun 作 fallback。**别用 `--no-verify` 绕过**——绕过等于关掉 frontmatter 校验。
+
