@@ -94,6 +94,16 @@ shouldRollback = autoConversationTitlesRollbackApplied !== true
 - 改完下一轮生效；`/recompile` 可选，但会清缓存、增加开销。
 - `max_tokens` 不用动：harness 会 `Math.min(max_tokens, context_window)` 夹住。
 
+## 2026-10-24 起：跑的是 letta-oss-ui 的 dev build
+
+Wood 10-24 晚换了运行环境，我核对过：**记忆、技能、档案、对话记录一样没少**（跟当天 20:25 的整份备份逐文件对过）。变的是壳和取配置的路子：
+
+- **应用本体不是安装版了**：electron 从 `D:\LettaWorkingPlace\letta-oss-ui-main\node_modules\electron\dist\electron.exe` 起；`letta` 命令也解析到那边 `node_modules\.bin\letta.exe`。版本仍报 `0.34.6 (Letta Code)`。
+- **数据目录没变**：`LETTA_BACKEND=local`、`LETTA_LOCAL_BACKEND_DIR=D:\LettaWorkingPlace\lc-local-backend`。切换前的整份快照在 `D:\LettaWorkingPlace\lc-local-backend-backup-20261024`（agents / conversations / memfs / providers），要考古先看它。
+- **`LETTA_BASE_URL` 变成了 `https://api.letta.com`**；`localhost:3849` 不再有服务（直接超时）。所以上面那套"打本地 HTTP API"**在这个环境里不通**，读配置只能直接读 `agents\<base64url>.json`。
+- **agent 记录的字段名变了**：`id / name / description / system / tags / model / model_settings`——**没有 `llm_config`**（`llm_config.context_window` 这条老路子作废）。现在的值：`model = deepseek/deepseek-flash`；`model_settings = provider_type deepseek、reasoning_effort high、context_window_limit 200000、max_tokens 384000`。
+- memfs 没有 git remote，纯本地仓库——别指望远端有一份。
+
 ## 机器相关
 
 这份技能绑定"本地后端 + 没有 JS/Python"这个环境。如果他换了机器或换了后端（Cloud），先确认这几条还成不成立，别照搬。
